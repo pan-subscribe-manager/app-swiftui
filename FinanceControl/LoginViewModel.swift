@@ -29,7 +29,7 @@ class LoginViewModel: ObservableObject {
 		}
 	}
 	
-	func login(clientService: ClientService) async {
+	@MainActor func login(clientService: ClientService) async {
 		do {
 			if username.isEmpty {
 				throw LoginViewModelError.emptyUsername

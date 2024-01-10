@@ -13,19 +13,24 @@ struct LoginView: View {
 	
 	var body: some View {
 		NavigationStack {
-			Form {
-				TextField("Username", text: $viewModel.username)
-				TextField("Password", text: $viewModel.password)
-				Button("Login") {
-					Task {
-						await viewModel.login(clientService: clientService)
-					}					
+			if viewModel.isBusy {
+				ProgressView()
+			} else {
+				Form {
+					TextField("Username", text: $viewModel.username)
+					TextField("Password", text: $viewModel.password)
+					Button("Login") {
+						Task {
+							await viewModel.login(clientService: clientService)
+						}
+					}
 				}
+				.padding()
+				.alert(isPresented: $viewModel.shouldPresentErrorAlert) {
+					Alert(title: Text("Error"), message: Text(viewModel.errorMessage!), dismissButton: .default(Text("OK")))
+				}
+				.navigationTitle("Login")
 			}
-			.alert(isPresented: $viewModel.shouldPresentErrorAlert) {
-				Alert(title: Text("Error"), message: Text(viewModel.errorMessage!), dismissButton: .default(Text("OK")))
-			}
-			.navigationTitle("Login")
 		}
 	}
 }

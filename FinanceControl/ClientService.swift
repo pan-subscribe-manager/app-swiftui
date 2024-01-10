@@ -17,7 +17,9 @@ class ClientService: ObservableObject {
 	
 	func login(username: String, password: String) async throws {
 		try await client.login(username: username, password: password)
-		isLoggedIn = true
+		DispatchQueue.main.async { [unowned self] in
+			self.isLoggedIn = true
+		}
 	}
 	
 	/// run is the wrapper of Client, which accepts a closure that calls the Client methods,
@@ -26,7 +28,9 @@ class ClientService: ObservableObject {
 		do {
 			return try await op(client)
 		} catch ClientError.Unauthorized {
-			isLoggedIn = false
+			DispatchQueue.main.async { [unowned self] in
+				self.isLoggedIn = false
+			}
 			client.logout()
 			throw ClientError.Unauthorized
 		}
