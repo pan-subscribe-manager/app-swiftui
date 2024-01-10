@@ -38,14 +38,19 @@ class Client {
 			throw ClientError.invalidResponse
 		}
 		
-		if response.statusCode == 401 {
-			throw ClientError.unauthorized
-		}
-		
-		// deserialize given data to JSON
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
-		return try decoder.decode(T.self, from: data)
+
+		switch response.statusCode {
+			case 401:
+				let errorResponse = try decoder.decode(ErrorResponseDto.self, from: data)
+				throw ClientError.unauthorized(details: errorResponse.details)
+			case 200...299:
+				return try decoder.decode(T.self, from: data)
+			default:
+				let errorResponse = try decoder.decode(ErrorResponseDto.self, from: data)
+				throw ClientError.apiError(statusCode: response.statusCode, details: errorResponse.details)
+		}
 	}
 	
 	func requestWithJson<Req: Encodable, Resp: Decodable>(_ url: String, method: String, body: Req) async throws -> Resp {
@@ -84,4 +89,8 @@ struct LoginRequestDto: Codable {
 struct TokenResponseDto: Codable {
 	var accessToken: String
 	var tokenType: String
+}
+
+struct ErrorResponseDto: Codable {
+	var details: String
 }

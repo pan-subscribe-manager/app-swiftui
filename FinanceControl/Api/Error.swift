@@ -8,7 +8,7 @@
 import Foundation
 
 enum ClientError: Error {
-	case unauthorized
+	case unauthorized(details: String)
 	case invalidResponse
 	case invalidUrl
 	case invalidInput
@@ -19,8 +19,11 @@ enum ClientError: Error {
 extension ClientError: LocalizedError {
 	public var errorDescription: String? {
 		switch self {
-			case .unauthorized:
-				return NSLocalizedString("Unauthorized", comment: "ClientError")
+			case .unauthorized(let details):
+				return String(
+					format: NSLocalizedString("Unauthorized ($@)", comment: "ClientError"),
+					details
+				)
 			case .invalidResponse:
 				return NSLocalizedString("Invalid response", comment: "ClientError")
 			case .invalidUrl:
@@ -28,10 +31,28 @@ extension ClientError: LocalizedError {
 			case .invalidInput:
 				return NSLocalizedString("Invalid input", comment: "ClientError")
 			case .apiError(let statusCode, let details):
-				return String(
-					format: NSLocalizedString("Operation failed (HTTP $d, $@)", comment: "ClientError"),
-					statusCode, details
-				)
+				let commonErrorTemplate = NSLocalizedString("$@ (HTTP $d, $@)", comment: "ClientError. $1 = error kind (User error / Server error), $2 = error code, $3 = error details")
+				
+				switch (statusCode) {
+					case 400...499:
+						return String(
+							format: commonErrorTemplate,
+							NSLocalizedString("User error", comment: "ClientError > commonErrorTemplate"),
+							statusCode, details
+						)
+					case 500...599:
+						return String(
+							format: commonErrorTemplate,
+							NSLocalizedString("Server error", comment: "ClientError > commonErrorTemplate"),
+							statusCode, details
+						)
+					default:
+						return String(
+							format: commonErrorTemplate,
+							NSLocalizedString("API error", comment: "ClientError > commonErrorTemplate"),
+							statusCode, details
+						)
+				}
 		}
 	}
 }
