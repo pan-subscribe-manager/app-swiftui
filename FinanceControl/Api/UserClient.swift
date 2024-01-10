@@ -12,3 +12,9 @@ extension Client {
 		return try await requestForJson("/users/me", method: "GET")
 	}
 }
+
+struct UserInformationResponseDto: Codable {
+	var username: String
+	var full_name: String?
+	var email: String?
+}

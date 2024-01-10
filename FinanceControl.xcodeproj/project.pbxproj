@@ -21,9 +21,7 @@
 		FFA0EFA22B4E5064006613CC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA12B4E5064006613CC /* Client.swift */; };
 		FFA0EFA42B4E5329006613CC /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA32B4E5329006613CC /* Error.swift */; };
 		FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA52B4E5706006613CC /* MethodDto.swift */; };
-		FFA0EFA82B4E5B54006613CC /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA72B4E5B54006613CC /* LoginDto.swift */; };
 		FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */; };
-		FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */; };
 		FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +60,7 @@
 		FFA0EFA12B4E5064006613CC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		FFA0EFA32B4E5329006613CC /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		FFA0EFA52B4E5706006613CC /* MethodDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodDto.swift; sourceTree = "<group>"; };
-		FFA0EFA72B4E5B54006613CC /* LoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
 		FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
-		FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FFA0EFB12B4E646F006613CC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,9 +159,7 @@
 				FFA0EFA12B4E5064006613CC /* Client.swift */,
 				FFA0EFA32B4E5329006613CC /* Error.swift */,
 				FFA0EFA52B4E5706006613CC /* MethodDto.swift */,
-				FFA0EFA72B4E5B54006613CC /* LoginDto.swift */,
 				FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */,
-				FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -303,12 +297,10 @@
 				FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */,
 				FF2003AB2B4E930F00CE86A3 /* LoggedInContentView.swift in Sources */,
 				FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */,
-				FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */,
 				FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */,
 				FFA0EF742B4E4FAB006613CC /* ContentView.swift in Sources */,
 				FFA0EF762B4E4FAB006613CC /* Item.swift in Sources */,
 				FF2003A92B4E817D00CE86A3 /* LoginView.swift in Sources */,
-				FFA0EFA82B4E5B54006613CC /* LoginDto.swift in Sources */,
 				FFA0EFA22B4E5064006613CC /* Client.swift in Sources */,
 				FFA0EFA42B4E5329006613CC /* Error.swift in Sources */,
 				FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */,
