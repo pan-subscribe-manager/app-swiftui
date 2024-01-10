@@ -21,7 +21,7 @@ class Client {
 	
 	func request<T: Decodable>(_ url: String, method: String, body: Data? = nil) async throws -> T {
 		guard let url = URL(string: url, relativeTo: Client.BASE_URL) else {
-			throw ClientError.InvalidUrl
+			throw ClientError.invalidUrl
 		}
 		
 		var request = URLRequest(url: url)
@@ -35,11 +35,11 @@ class Client {
 		
 		let (data, response) = try await urlSession.data(for: request)
 		guard let response = response as? HTTPURLResponse else {
-			throw ClientError.InvalidResponse
+			throw ClientError.invalidResponse
 		}
 		
 		if response.statusCode == 401 {
-			throw ClientError.Unauthorized
+			throw ClientError.unauthorized
 		}
 		
 		// deserialize given data to JSON
@@ -58,7 +58,7 @@ class Client {
 	func login(username: String, password: String) async throws {
 		let requestDto = LoginRequestDto(username: username, password: password)
 		guard let requestBody = requestDto.queryString.data(using: .utf8) else {
-			throw ClientError.InvalidResponse
+			throw ClientError.invalidResponse
 		}
 		let response: TokenResponseDto = try await request("/token", method: "POST", body: requestBody)
 		

@@ -8,23 +8,30 @@
 import Foundation
 
 enum ClientError: Error {
-	case Unauthorized
-	case InvalidResponse
-	case InvalidUrl
-	case InvalidInput
+	case unauthorized
+	case invalidResponse
+	case invalidUrl
+	case invalidInput
+	
+	case apiError(statusCode: Int, details: String)
 }
 
 extension ClientError: LocalizedError {
 	public var errorDescription: String? {
 		switch self {
-			case .Unauthorized:
+			case .unauthorized:
 				return NSLocalizedString("Unauthorized", comment: "ClientError")
-			case .InvalidResponse:
+			case .invalidResponse:
 				return NSLocalizedString("Invalid response", comment: "ClientError")
-			case .InvalidUrl:
+			case .invalidUrl:
 				return NSLocalizedString("Invalid URL", comment: "ClientError")
-			case .InvalidInput:
+			case .invalidInput:
 				return NSLocalizedString("Invalid input", comment: "ClientError")
+			case .apiError(let statusCode, let details):
+				return String(
+					format: NSLocalizedString("Operation failed (HTTP $d, $@)", comment: "ClientError"),
+					statusCode, details
+				)
 		}
 	}
 }

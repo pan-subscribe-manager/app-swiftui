@@ -27,12 +27,12 @@ class ClientService: ObservableObject {
 	func run<T>(_ op: (Client) async throws -> T) async throws -> T {
 		do {
 			return try await op(client)
-		} catch ClientError.Unauthorized {
+		} catch ClientError.unauthorized {
 			DispatchQueue.main.async { [unowned self] in
 				self.isLoggedIn = false
 			}
 			client.logout()
-			throw ClientError.Unauthorized
+			throw ClientError.unauthorized
 		}
 	}
 }

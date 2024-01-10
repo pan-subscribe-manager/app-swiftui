@@ -46,7 +46,7 @@ class LoginViewModel: ObservableObject {
 			
 			do {
 				try await clientService.login(username: username, password: password)
-			} catch ClientError.Unauthorized {
+			} catch ClientError.unauthorized {
 				throw LoginViewModelError.invalidCredential
 			} catch {
 				throw error
