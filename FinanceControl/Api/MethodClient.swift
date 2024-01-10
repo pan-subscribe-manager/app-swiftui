@@ -20,8 +20,12 @@ extension Client {
 		return try await requestWithJson("/methods", method: "POST", body: request)
 	}
 	
-	func updateMethod(methodId: String, request: MethodCreateRequestDto) async throws -> MethodDto {
-		return try await requestWithJson("/methods/\(methodId)", method: "PUT", body: request)
+	func patchMethod(methodId: String, request: MethodPatchRequestDto) async throws -> MethodDto {
+		return try await requestWithJson("/methods/\(methodId)", method: "PATCH", body: request)
+	}
+	
+	func deleteMethod(methodId: String) async throws {
+		_ = try await requestRaw("/methods/\(methodId)", method: "DELETE")
 	}
 }
 
@@ -45,5 +49,12 @@ struct MethodCreateRequestDto: Codable {
 	var name: String
 	var description: String?
 	var kind: MethodKind
+	var color: String?
+}
+
+struct MethodPatchRequestDto: Codable {
+	var name: String?
+	var description: String?
+	var kind: MethodKind?
 	var color: String?
 }

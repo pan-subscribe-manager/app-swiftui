@@ -19,7 +19,7 @@ class Client {
 		urlSession = URLSession(configuration: .default)
 	}
 	
-	func request<T: Decodable>(_ url: String, method: String, body: Data? = nil) async throws -> T {
+	func requestRaw(_ url: String, method: String, body: Data? = nil) async throws -> (Data, HTTPURLResponse) {
 		guard let url = URL(string: url, relativeTo: Client.BASE_URL) else {
 			throw ClientError.invalidUrl
 		}
@@ -38,9 +38,15 @@ class Client {
 			throw ClientError.invalidResponse
 		}
 		
+		return (data, response)
+	}
+	
+	func request<T: Decodable>(_ url: String, method: String, body: Data? = nil) async throws -> T {
+		let (data, response) = try await requestRaw(url, method: method, body: body)
+		
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
-
+		
 		switch response.statusCode {
 			case 401:
 				let errorResponse = try decoder.decode(ErrorResponseDto.self, from: data)
