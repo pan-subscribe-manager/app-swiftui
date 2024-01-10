@@ -73,7 +73,6 @@ extension LoginViewModelError: LocalizedError {
 				return NSLocalizedString("Password is required.", comment: "LoginViewModelError")
 			case .invalidCredential:
 				return NSLocalizedString("Invalid username or password pair.", comment: "LoginViewModelError")
-				
 		}
 	}
 }

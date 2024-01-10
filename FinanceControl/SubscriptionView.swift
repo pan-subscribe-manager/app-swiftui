@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SubscriptionView.swift
 //  FinanceControl
 //
 //  Created by Yi-Jyun Pan on 2024/1/10.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct LoggedInContentView: View {
+struct SubscriptionView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query private var items: [Item]
 	

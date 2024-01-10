@@ -13,7 +13,7 @@ struct ContentView: View {
 	
 	var body: some View {
 		if clientService.isLoggedIn {
-			LoggedInContentView()
+			SubscriptionView()
 		} else {
 			LoginView()
 				.environmentObject(clientService)
