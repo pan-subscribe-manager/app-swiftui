@@ -19,7 +19,7 @@ class Client {
 		urlSession = URLSession(configuration: .default)
 	}
 	
-	func requestForJson<T: Codable>(_ url: String, method: String, body: Data? = nil) async throws -> T {
+	func request<T: Decodable>(_ url: String, method: String, body: Data? = nil) async throws -> T {
 		guard let url = URL(string: url, relativeTo: Client.BASE_URL) else {
 			throw ClientError.InvalidUrl
 		}
@@ -48,11 +48,20 @@ class Client {
 		return try decoder.decode(T.self, from: data)
 	}
 	
-	func login(username: String, password: String) async throws {
-		let requestBody = try LoginRequestDto(username: username, password: password).encodeToData()
-		let response: TokenResponseDto = try await requestForJson("/token", method: "POST", body: requestBody)
+	func requestWithJson<Req: Encodable, Resp: Decodable>(_ url: String, method: String, body: Req) async throws -> Resp {
+		let encoder = JSONEncoder()
+		let data = try encoder.encode(body)
 		
-		// write token to this client instance
+		return try await request(url, method: method, body: data)
+	}
+	
+	func login(username: String, password: String) async throws {
+		let requestDto = LoginRequestDto(username: username, password: password)
+		guard let requestBody = requestDto.queryString.data(using: .utf8) else {
+			throw ClientError.InvalidResponse
+		}
+		let response: TokenResponseDto = try await request("/token", method: "POST", body: requestBody)
+		
 		jwtToken = response.accessToken
 	}
 	
@@ -69,14 +78,6 @@ struct LoginRequestDto: Codable {
 		get {
 			return "username=\(username)&password=\(password)"
 		}
-	}
-	
-	func encodeToData() throws -> Data {
-		guard let queryString = queryString.data(using: .utf8) else {
-			throw ClientError.InvalidResponse
-		}
-		
-		return queryString
 	}
 }
 

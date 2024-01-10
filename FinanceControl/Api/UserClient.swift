@@ -9,7 +9,7 @@ import Foundation
 
 extension Client {
 	func getMe() async throws -> UserInformationResponseDto {
-		return try await requestForJson("/users/me", method: "GET")
+		return try await request("/users/me", method: "GET")
 	}
 }
 
