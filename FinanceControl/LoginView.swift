@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct LoginView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+	@StateObject private var viewModel = LoginViewModel();
+	
+	var body: some View {
+		NavigationView {
+			Form {
+				TextField("Username", text: viewModel.username)
+				TextField("Password", text: viewModel.password)
+				Button("Login") {
+					Task {
+						do {
+							try await viewModel.login()
+						} catch {
+							print(error)
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 #Preview {
-    LoginView()
+	LoginView()
 }

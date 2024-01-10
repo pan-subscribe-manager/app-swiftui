@@ -15,6 +15,14 @@
 		FFA0EF862B4E4FAF006613CC /* FinanceControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF852B4E4FAF006613CC /* FinanceControlTests.swift */; };
 		FFA0EF902B4E4FAF006613CC /* FinanceControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF8F2B4E4FAF006613CC /* FinanceControlUITests.swift */; };
 		FFA0EF922B4E4FAF006613CC /* FinanceControlUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF912B4E4FAF006613CC /* FinanceControlUITestsLaunchTests.swift */; };
+		FFA0EFA22B4E5064006613CC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA12B4E5064006613CC /* Client.swift */; };
+		FFA0EFA42B4E5329006613CC /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA32B4E5329006613CC /* Error.swift */; };
+		FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA52B4E5706006613CC /* MethodDto.swift */; };
+		FFA0EFA82B4E5B54006613CC /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFA72B4E5B54006613CC /* LoginDto.swift */; };
+		FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */; };
+		FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */; };
+		FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */; };
+		FFA0EFB22B4E646F006613CC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFB12B4E646F006613CC /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		FFA0EF8B2B4E4FAF006613CC /* FinanceControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinanceControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA0EF8F2B4E4FAF006613CC /* FinanceControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceControlUITests.swift; sourceTree = "<group>"; };
 		FFA0EF912B4E4FAF006613CC /* FinanceControlUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceControlUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FFA0EFA12B4E5064006613CC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		FFA0EFA32B4E5329006613CC /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		FFA0EFA52B4E5706006613CC /* MethodDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodDto.swift; sourceTree = "<group>"; };
+		FFA0EFA72B4E5B54006613CC /* LoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
+		FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
+		FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FFA0EFB12B4E646F006613CC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +113,15 @@
 		FFA0EF702B4E4FAB006613CC /* FinanceControl */ = {
 			isa = PBXGroup;
 			children = (
+				FFA0EFA02B4E505A006613CC /* Api */,
 				FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */,
 				FFA0EF732B4E4FAB006613CC /* ContentView.swift */,
 				FFA0EF752B4E4FAB006613CC /* Item.swift */,
 				FFA0EF772B4E4FAF006613CC /* Assets.xcassets */,
 				FFA0EF792B4E4FAF006613CC /* FinanceControl.entitlements */,
 				FFA0EF7A2B4E4FAF006613CC /* Preview Content */,
+				FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */,
+				FFA0EFB12B4E646F006613CC /* LoginView.swift */,
 			);
 			path = FinanceControl;
 			sourceTree = "<group>";
@@ -130,6 +149,19 @@
 				FFA0EF912B4E4FAF006613CC /* FinanceControlUITestsLaunchTests.swift */,
 			);
 			path = FinanceControlUITests;
+			sourceTree = "<group>";
+		};
+		FFA0EFA02B4E505A006613CC /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				FFA0EFA12B4E5064006613CC /* Client.swift */,
+				FFA0EFA32B4E5329006613CC /* Error.swift */,
+				FFA0EFA52B4E5706006613CC /* MethodDto.swift */,
+				FFA0EFA72B4E5B54006613CC /* LoginDto.swift */,
+				FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */,
+				FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +294,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */,
+				FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */,
+				FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */,
 				FFA0EF742B4E4FAB006613CC /* ContentView.swift in Sources */,
 				FFA0EF762B4E4FAB006613CC /* Item.swift in Sources */,
+				FFA0EFA82B4E5B54006613CC /* LoginDto.swift in Sources */,
+				FFA0EFA22B4E5064006613CC /* Client.swift in Sources */,
+				FFA0EFA42B4E5329006613CC /* Error.swift in Sources */,
+				FFA0EFB22B4E646F006613CC /* LoginView.swift in Sources */,
+				FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */,
 				FFA0EF722B4E4FAB006613CC /* FinanceControlApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

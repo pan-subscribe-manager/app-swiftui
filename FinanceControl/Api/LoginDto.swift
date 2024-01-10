@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+struct LoginRequestDto: Codable {
+	var username: String
+	var password: String
+	
+	var queryString: String {
+		get {
+			return "username=\(username)&password=\(password)"
+		}
+	}
+	
+	func encodeToData() throws -> Data {
+		guard let queryString = queryString.data(using: .utf8) else {
+			throw ClientError.InvalidResponse
+		}
+		
+		return queryString
+	}
+}
+
+struct TokenResponseDto: Codable {
+	var accessToken: String
+	var tokenType: String
+}

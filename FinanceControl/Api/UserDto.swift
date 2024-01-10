@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct UserInformationResponseDto: Codable {
+	var username: String
+	var full_name: String?
+	var email: String?
+}
