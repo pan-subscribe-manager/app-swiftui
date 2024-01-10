@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LoginViewModel: ObservableObject {
+final class LoginViewModel: ObservableObject {
 	@Published var username: String = ""
 	@Published var password: String = ""
 	@Published var isBusy: Bool = false
