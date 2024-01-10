@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */; };
 		FF2003A92B4E817D00CE86A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFB12B4E646F006613CC /* LoginView.swift */; };
+		FF2003AB2B4E930F00CE86A3 /* LoggedInContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2003AA2B4E930F00CE86A3 /* LoggedInContentView.swift */; };
 		FFA0EF722B4E4FAB006613CC /* FinanceControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */; };
 		FFA0EF742B4E4FAB006613CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF732B4E4FAB006613CC /* ContentView.swift */; };
 		FFA0EF762B4E4FAB006613CC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF752B4E4FAB006613CC /* Item.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientService.swift; sourceTree = "<group>"; };
+		FF2003AA2B4E930F00CE86A3 /* LoggedInContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInContentView.swift; sourceTree = "<group>"; };
 		FFA0EF6E2B4E4FAB006613CC /* FinanceControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceControlApp.swift; sourceTree = "<group>"; };
 		FFA0EF732B4E4FAB006613CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				FFA0EFA02B4E505A006613CC /* Api */,
 				FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */,
 				FFA0EF732B4E4FAB006613CC /* ContentView.swift */,
+				FF2003AA2B4E930F00CE86A3 /* LoggedInContentView.swift */,
 				FFA0EF752B4E4FAB006613CC /* Item.swift */,
 				FFA0EF772B4E4FAF006613CC /* Assets.xcassets */,
 				FFA0EF792B4E4FAF006613CC /* FinanceControl.entitlements */,
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */,
+				FF2003AB2B4E930F00CE86A3 /* LoggedInContentView.swift in Sources */,
 				FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */,
 				FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */,
 				FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */,
