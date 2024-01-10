@@ -8,19 +8,19 @@
 import Foundation
 
 extension Client {
-	func listMethods() async throws -> Array<MethodDto> {
+	func listMethods() async throws -> Array<Method> {
 		return try await request("/methods", method: "GET")
 	}
 	
-	func getMethod(methodId: String) async throws -> MethodDto {
+	func getMethod(methodId: String) async throws -> Method {
 		return try await request("/methods/\(methodId)", method: "GET")
 	}
 	
-	func createMethod(request: MethodCreateRequestDto) async throws -> MethodDto {
+	func createMethod(request: MethodCreateRequest) async throws -> Method {
 		return try await requestWithJson("/methods", method: "POST", body: request)
 	}
 	
-	func patchMethod(methodId: String, request: MethodPatchRequestDto) async throws -> MethodDto {
+	func patchMethod(methodId: String, request: MethodPatchRequest) async throws -> Method {
 		return try await requestWithJson("/methods/\(methodId)", method: "PATCH", body: request)
 	}
 	
@@ -37,7 +37,7 @@ enum MethodKind: String, Codable {
 	case other = "other"
 }
 
-struct MethodDto: Codable {
+struct Method: Codable {
 	var id: String
 	var name: String
 	var description: String?
@@ -45,14 +45,14 @@ struct MethodDto: Codable {
 	var color: String?
 }
 
-struct MethodCreateRequestDto: Codable {
+struct MethodCreateRequest: Codable {
 	var name: String
 	var description: String?
 	var kind: MethodKind
 	var color: String?
 }
 
-struct MethodPatchRequestDto: Codable {
+struct MethodPatchRequest: Codable {
 	var name: String?
 	var description: String?
 	var kind: MethodKind?

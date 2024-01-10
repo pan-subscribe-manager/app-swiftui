@@ -8,12 +8,12 @@
 import Foundation
 
 extension Client {
-	func getMe() async throws -> UserInformationResponseDto {
+	func getMe() async throws -> UserInformationResponse {
 		return try await request("/users/me", method: "GET")
 	}
 }
 
-struct UserInformationResponseDto: Codable {
+struct UserInformationResponse: Codable {
 	var username: String
 	var full_name: String?
 	var email: String?

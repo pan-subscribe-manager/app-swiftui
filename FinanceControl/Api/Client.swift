@@ -49,12 +49,12 @@ class Client {
 		
 		switch response.statusCode {
 			case 401:
-				let errorResponse = try decoder.decode(ErrorResponseDto.self, from: data)
+				let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
 				throw ClientError.unauthorized(details: errorResponse.details)
 			case 200...299:
 				return try decoder.decode(T.self, from: data)
 			default:
-				let errorResponse = try decoder.decode(ErrorResponseDto.self, from: data)
+				let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
 				throw ClientError.apiError(statusCode: response.statusCode, details: errorResponse.details)
 		}
 	}
@@ -67,11 +67,11 @@ class Client {
 	}
 	
 	func login(username: String, password: String) async throws {
-		let requestDto = LoginRequestDto(username: username, password: password)
-		guard let requestBody = requestDto.queryString.data(using: .utf8) else {
+		let request = LoginRequest(username: username, password: password)
+		guard let requestBody = request.queryString.data(using: .utf8) else {
 			throw ClientError.invalidResponse
 		}
-		let response: TokenResponseDto = try await request("/token", method: "POST", body: requestBody)
+		let response: TokenResponse = try await request("/token", method: "POST", body: requestBody)
 		
 		jwtToken = response.accessToken
 	}
@@ -81,7 +81,7 @@ class Client {
 	}
 }
 
-struct LoginRequestDto: Codable {
+struct LoginRequest: Codable {
 	var username: String
 	var password: String
 	
@@ -92,11 +92,11 @@ struct LoginRequestDto: Codable {
 	}
 }
 
-struct TokenResponseDto: Codable {
+struct TokenResponse: Codable {
 	var accessToken: String
 	var tokenType: String
 }
 
-struct ErrorResponseDto: Codable {
+struct ErrorResponse: Codable {
 	var details: String
 }
