@@ -6,38 +6,53 @@
 //
 
 import Foundation
+import Combine
 
 class LoginViewModel: ObservableObject {
-	var client: Client
+	@Published var username: String = ""
+	@Published var password: String = ""
+	@Published var isBusy: Bool = false
+	@Published var error: Error? = nil
 	
-	@Published var username: String
-	@Published var password: String
-	
-	init(client: Client, username: String = "", password: String = "") {
-		self.client = client
-		self.username = username
-		self.password = password
+	var shouldPresentErrorAlert: Bool {
+		get { return error != nil }
+		set(shouldOpen) {
+			if (shouldOpen == false) {
+				error = nil
+			}
+		}
 	}
 	
-	func login() async throws {
-		if username.isEmpty {
-			throw LoginViewModelError.emptyUsername
+	var errorMessage: String? {
+		get {
+			return error?.localizedDescription
 		}
-		
-		if password.isEmpty {
-			throw LoginViewModelError.emptyPassword
-		}
-		
+	}
+	
+	func login(clientService: ClientService) async {
 		do {
-			try await client.login(username: username, password: password)
-		} catch ClientError.Unauthorized {
-			throw LoginViewModelError.invalidCredential
-		} catch {
-			guard let error = error as? ClientError else {
-				throw error
+			if username.isEmpty {
+				throw LoginViewModelError.emptyUsername
 			}
 			
-			throw LoginViewModelError.otherClientError(error)
+			if password.isEmpty {
+				throw LoginViewModelError.emptyPassword
+			}
+			
+			isBusy = true
+			defer {
+				isBusy = false
+			}
+			
+			do {
+				try await clientService.login(username: username, password: password)
+			} catch ClientError.Unauthorized {
+				throw LoginViewModelError.invalidCredential
+			} catch {
+				throw error
+			}
+		} catch {
+			self.error = error
 		}
 	}
 }
@@ -47,7 +62,6 @@ enum LoginViewModelError: Error {
 	case emptyUsername
 	case emptyPassword
 	case invalidCredential
-	case otherClientError(ClientError)
 }
 
 extension LoginViewModelError: LocalizedError {
@@ -59,11 +73,7 @@ extension LoginViewModelError: LocalizedError {
 				return NSLocalizedString("Password is required.", comment: "LoginViewModelError")
 			case .invalidCredential:
 				return NSLocalizedString("Invalid username or password pair.", comment: "LoginViewModelError")
-			case .otherClientError(let clientError):
-				return String(
-					format: NSLocalizedString("Client error: %@", comment: "LoginViewModelError"),
-					clientError.errorDescription ?? "(no description)"
-				)
+				
 		}
 	}
 }

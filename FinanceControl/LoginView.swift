@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct LoginView: View {
-	@StateObject private var viewModel = LoginViewModel();
+	@EnvironmentObject private var clientService: ClientService
+	@StateObject private var viewModel = LoginViewModel()
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			Form {
-				TextField("Username", text: viewModel.username)
-				TextField("Password", text: viewModel.password)
+				TextField("Username", text: $viewModel.username)
+				TextField("Password", text: $viewModel.password)
 				Button("Login") {
 					Task {
-						do {
-							try await viewModel.login()
-						} catch {
-							print(error)
-						}
-					}
+						await viewModel.login(clientService: clientService)
+					}					
 				}
 			}
+			.alert(isPresented: $viewModel.shouldPresentErrorAlert) {
+				Alert(title: Text("Error"), message: Text(viewModel.errorMessage!), dismissButton: .default(Text("OK")))
+			}
+			.navigationTitle("Login")
 		}
 	}
 }

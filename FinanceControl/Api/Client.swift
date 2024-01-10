@@ -8,7 +8,7 @@
 import Foundation
 
 class Client {
-	static let BASE_URL = URL(string: "https://localhost:8000")!;
+	static let BASE_URL = URL(string: "http://127.0.0.1:8000")!;
 	
 	static let shared: Client = Client();
 	private var jwtToken: String?;
@@ -54,5 +54,9 @@ class Client {
 		
 		// write token to this client instance
 		jwtToken = response.accessToken
+	}
+	
+	func logout() {
+		jwtToken = nil
 	}
 }

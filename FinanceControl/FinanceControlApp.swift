@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct FinanceControlApp: App {
+	var clientService: ClientService = ClientService(client: Client.shared)
+
 	var sharedModelContainer: ModelContainer = {
 		let schema = Schema([
 			Item.self,
@@ -25,7 +27,8 @@ struct FinanceControlApp: App {
 	
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			LoginView()
+				.environmentObject(clientService)
 		}
 		.modelContainer(sharedModelContainer)
 	}

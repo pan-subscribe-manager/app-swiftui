@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */; };
+		FF2003A92B4E817D00CE86A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFB12B4E646F006613CC /* LoginView.swift */; };
 		FFA0EF722B4E4FAB006613CC /* FinanceControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */; };
 		FFA0EF742B4E4FAB006613CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF732B4E4FAB006613CC /* ContentView.swift */; };
 		FFA0EF762B4E4FAB006613CC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EF752B4E4FAB006613CC /* Item.swift */; };
@@ -22,7 +24,6 @@
 		FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAB2B4E5E9F006613CC /* UserClient.swift */; };
 		FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAD2B4E5EC7006613CC /* UserDto.swift */; };
 		FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFAF2B4E6014006613CC /* LoginViewModel.swift */; };
-		FFA0EFB22B4E646F006613CC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFB12B4E646F006613CC /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientService.swift; sourceTree = "<group>"; };
 		FFA0EF6E2B4E4FAB006613CC /* FinanceControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceControlApp.swift; sourceTree = "<group>"; };
 		FFA0EF732B4E4FAB006613CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		FFA0EF702B4E4FAB006613CC /* FinanceControl */ = {
 			isa = PBXGroup;
 			children = (
+				FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */,
 				FFA0EFA02B4E505A006613CC /* Api */,
 				FFA0EF712B4E4FAB006613CC /* FinanceControlApp.swift */,
 				FFA0EF732B4E4FAB006613CC /* ContentView.swift */,
@@ -228,7 +231,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					FFA0EF6D2B4E4FAB006613CC = {
 						CreatedOnToolsVersion = 15.1;
@@ -244,7 +247,7 @@
 				};
 			};
 			buildConfigurationList = FFA0EF692B4E4FAB006613CC /* Build configuration list for PBXProject "FinanceControl" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -297,12 +300,13 @@
 				FFA0EFA62B4E5706006613CC /* MethodDto.swift in Sources */,
 				FFA0EFAC2B4E5E9F006613CC /* UserClient.swift in Sources */,
 				FFA0EFAE2B4E5EC7006613CC /* UserDto.swift in Sources */,
+				FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */,
 				FFA0EF742B4E4FAB006613CC /* ContentView.swift in Sources */,
 				FFA0EF762B4E4FAB006613CC /* Item.swift in Sources */,
+				FF2003A92B4E817D00CE86A3 /* LoginView.swift in Sources */,
 				FFA0EFA82B4E5B54006613CC /* LoginDto.swift in Sources */,
 				FFA0EFA22B4E5064006613CC /* Client.swift in Sources */,
 				FFA0EFA42B4E5329006613CC /* Error.swift in Sources */,
-				FFA0EFB22B4E646F006613CC /* LoginView.swift in Sources */,
 				FFA0EFB02B4E6014006613CC /* LoginViewModel.swift in Sources */,
 				FFA0EF722B4E4FAB006613CC /* FinanceControlApp.swift in Sources */,
 			);
@@ -375,6 +379,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -436,6 +441,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -463,11 +469,13 @@
 				CODE_SIGN_ENTITLEMENTS = FinanceControl/FinanceControl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FinanceControl/Preview Content\"";
 				DEVELOPMENT_TEAM = SG37523V73;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinanceControl/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -501,11 +509,13 @@
 				CODE_SIGN_ENTITLEMENTS = FinanceControl/FinanceControl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FinanceControl/Preview Content\"";
 				DEVELOPMENT_TEAM = SG37523V73;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinanceControl/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -538,6 +548,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SG37523V73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -561,6 +572,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SG37523V73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -583,6 +595,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SG37523V73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -605,6 +618,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SG37523V73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
