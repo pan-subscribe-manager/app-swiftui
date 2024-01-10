@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
 	@EnvironmentObject var clientService: ClientService
@@ -23,5 +22,4 @@ struct ContentView: View {
 
 #Preview {
 	ContentView()
-		.modelContainer(for: Item.self, inMemory: true)
 }
