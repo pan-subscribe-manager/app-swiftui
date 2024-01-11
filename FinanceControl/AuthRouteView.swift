@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AuthRouteView.swift
 //  FinanceControl
 //
 //  Created by Yi-Jyun Pan on 2024/1/10.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AuthRouteView: View {
 	@EnvironmentObject var clientService: ClientService
 	
 	var body: some View {
 		if clientService.isLoggedIn {
-			SubscriptionView()
+			ContentView()
+				.environmentObject(clientService)
 		} else {
 			LoginView()
 				.environmentObject(clientService)
@@ -21,5 +22,5 @@ struct ContentView: View {
 }
 
 #Preview {
-	ContentView()
+	AuthRouteView().environmentObject(ClientService())
 }

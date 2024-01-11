@@ -13,11 +13,13 @@ class Client {
 	static let shared: Client = Client();
 	private var jwtToken: String?;
 	
-	private let urlSession: URLSession;
+	private var urlSession: URLSession?;
 	
 	init() {
 		urlSession = URLSession(configuration: .default)
 	}
+	
+	// MARK: - Request
 	
 	func requestRaw(_ url: String, method: String, body: Data? = nil) async throws -> (Data, HTTPURLResponse) {
 		guard let url = URL(string: url, relativeTo: Client.BASE_URL) else {
@@ -33,7 +35,7 @@ class Client {
 			request.httpBody = body
 		}
 		
-		let (data, response) = try await urlSession.data(for: request)
+		let (data, response) = try await urlSession!.data(for: request)
 		guard let response = response as? HTTPURLResponse else {
 			throw ClientError.invalidResponse
 		}
@@ -50,12 +52,12 @@ class Client {
 		switch response.statusCode {
 			case 401:
 				let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
-				throw ClientError.unauthorized(details: errorResponse.details)
+				throw ClientError.unauthorized(detail: errorResponse.detail)
 			case 200...299:
 				return try decoder.decode(T.self, from: data)
 			default:
 				let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
-				throw ClientError.apiError(statusCode: response.statusCode, details: errorResponse.details)
+				throw ClientError.apiError(statusCode: response.statusCode, detail: errorResponse.detail)
 		}
 	}
 	
@@ -66,12 +68,14 @@ class Client {
 		return try await request(url, method: method, body: data)
 	}
 	
+	// MARK: - Login and logout
+	
 	func login(username: String, password: String) async throws {
-		let request = LoginRequest(username: username, password: password)
-		guard let requestBody = request.queryString.data(using: .utf8) else {
+		let requestDto = LoginRequest(username: username, password: password)
+		guard let requestBody = requestDto.queryString.data(using: .utf8) else {
 			throw ClientError.invalidResponse
 		}
-		let response: TokenResponse = try await request("/token", method: "POST", body: requestBody)
+		let response: TokenResponse = try await request("/token/", method: "POST", body: requestBody)
 		
 		jwtToken = response.accessToken
 	}
@@ -98,5 +102,5 @@ struct TokenResponse: Codable {
 }
 
 struct ErrorResponse: Codable {
-	var details: String
+	var detail: String
 }

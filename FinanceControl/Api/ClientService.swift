@@ -11,13 +11,13 @@ class ClientService: ObservableObject {
 	var client: Client
 	@Published var isLoggedIn: Bool = false
 	
-	init(client: Client = Client.shared) {
+	init(client: Client = Client.shared, logout: Bool = false) {
 		self.client = client
 	}
 	
 	func login(username: String, password: String) async throws {
 		try await client.login(username: username, password: password)
-		DispatchQueue.main.async { [unowned self] in
+		await MainActor.run { [unowned self] in
 			self.isLoggedIn = true
 		}
 	}
@@ -27,12 +27,12 @@ class ClientService: ObservableObject {
 	func run<T>(_ op: (Client) async throws -> T) async rethrows -> T {
 		do {
 			return try await op(client)
-		} catch ClientError.unauthorized(let details) {
-			DispatchQueue.main.async { [unowned self] in
+		} catch ClientError.unauthorized(let detail) {
+			await MainActor.run { [unowned self] in
 				self.isLoggedIn = false
 			}
 			client.logout()
-			throw ClientError.unauthorized(details: details)
+			throw ClientError.unauthorized(detail: detail)
 		}
 	}
 }

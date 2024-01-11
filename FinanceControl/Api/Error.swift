@@ -8,12 +8,12 @@
 import Foundation
 
 enum ClientError: Error {
-	case unauthorized(details: String)
+	case unauthorized(detail: String)
 	case invalidResponse
 	case invalidUrl
 	case invalidInput
 	
-	case apiError(statusCode: Int, details: String)
+	case apiError(statusCode: Int, detail: String)
 }
 
 extension ClientError: LocalizedError {
@@ -21,7 +21,7 @@ extension ClientError: LocalizedError {
 		switch self {
 			case .unauthorized(let details):
 				return String(
-					format: NSLocalizedString("Unauthorized ($@)", comment: "ClientError"),
+					format: NSLocalizedString("Unauthorized (%@)", comment: "ClientError"),
 					details
 				)
 			case .invalidResponse:
@@ -31,7 +31,7 @@ extension ClientError: LocalizedError {
 			case .invalidInput:
 				return NSLocalizedString("Invalid input", comment: "ClientError")
 			case .apiError(let statusCode, let details):
-				let commonErrorTemplate = NSLocalizedString("$@ (HTTP $d, $@)", comment: "ClientError. $1 = error kind (User error / Server error), $2 = error code, $3 = error details")
+				let commonErrorTemplate = NSLocalizedString("%@ (HTTP %d, %@)", comment: "ClientError. $1 = error kind (User error / Server error), $2 = error code, $3 = error details")
 				
 				switch (statusCode) {
 					case 400...499:

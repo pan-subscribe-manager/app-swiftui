@@ -13,7 +13,7 @@ struct FinanceControlApp: App {
 	
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			AuthRouteView()
 				.environmentObject(clientService)
 		}
 	}

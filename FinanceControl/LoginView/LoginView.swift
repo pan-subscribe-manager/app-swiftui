@@ -29,7 +29,7 @@ struct LoginView: View {
 				.padding()
 #endif
 				.alert(isPresented: $viewModel.shouldPresentErrorAlert) {
-					Alert(title: Text("Error"), message: Text(viewModel.errorMessage!), dismissButton: .default(Text("OK")))
+					Alert(title: Text("Login failed"), message: Text(viewModel.errorMessage!), dismissButton: .default(Text("OK")))
 				}
 				.navigationTitle("Login")
 			}
@@ -39,4 +39,5 @@ struct LoginView: View {
 
 #Preview {
 	LoginView()
+		.environmentObject(ClientService(client: Client.shared))
 }
