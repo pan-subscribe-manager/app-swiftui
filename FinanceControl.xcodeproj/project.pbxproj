@@ -10,6 +10,7 @@
 		FF0D591A2B4F03870000E508 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0D59192B4F03870000E508 /* ContentViewModel.swift */; };
 		FF0D591C2B4F059A0000E508 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0D591B2B4F059A0000E508 /* Common.swift */; };
 		FF0D59232B4F18720000E508 /* AsyncObjects in Frameworks */ = {isa = PBXBuildFile; productRef = FF0D59222B4F18720000E508 /* AsyncObjects */; };
+		FF0D59282B4FFFF20000E508 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF0D59272B4FFFF20000E508 /* .gitignore */; };
 		FF2003A72B4E7AAF00CE86A3 /* ClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */; };
 		FF2003A92B4E817D00CE86A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0EFB12B4E646F006613CC /* LoginView.swift */; };
 		FF2003AB2B4E930F00CE86A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2003AA2B4E930F00CE86A3 /* ContentView.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		FF0D59192B4F03870000E508 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		FF0D591B2B4F059A0000E508 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		FF0D59272B4FFFF20000E508 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF2003A62B4E7AAF00CE86A3 /* ClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientService.swift; sourceTree = "<group>"; };
 		FF2003AA2B4E930F00CE86A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FF2003AC2B4ED6F100CE86A3 /* MethodClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodClient.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		FFA0EF652B4E4FAB006613CC = {
 			isa = PBXGroup;
 			children = (
+				FF0D59272B4FFFF20000E508 /* .gitignore */,
 				FFA0EF702B4E4FAB006613CC /* FinanceControl */,
 				FFA0EF842B4E4FAF006613CC /* FinanceControlTests */,
 				FFA0EF8E2B4E4FAF006613CC /* FinanceControlUITests */,
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA0EF7C2B4E4FAF006613CC /* Preview Assets.xcassets in Resources */,
+				FF0D59282B4FFFF20000E508 /* .gitignore in Resources */,
 				FFA0EF782B4E4FAF006613CC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
